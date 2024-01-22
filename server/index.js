@@ -5,7 +5,7 @@ import mongoose from 'mongoose';
 import User from './models/User.js';
 const app = express();
 app.use(express.json());
-dotenv.config(); 
+dotenv.config();
 const PORT = process.env.PORT || 5000;
 mongoose.connect(process.env.MONGODB_URL, () => {
     console.log('Connected to MongoDB');
@@ -14,7 +14,7 @@ mongoose.connect(process.env.MONGODB_URL, () => {
 app.post('/login', async (req, res) => {
     const { email, password } = req.body;
 
-    
+
 
     if (!email || !password) {
         return res.json({
@@ -42,42 +42,38 @@ app.post('/login', async (req, res) => {
 
 app.post('/signup', async (req, res) => {
     const { name, phone, email, password, cpassword, role } = req.body;
-   
+
     // validation to check if all fields are filled starts here
-   
+
 
     // validation to check if all fields are filled ends here
 
-    if(!validator.isEmail(email))
-
-    {
+    if (!validator.isEmail(email)) {
         return res.json({
             success: false,
             message: "Please enter valid email",
-            
+
         })
-    } 
-if(!validator.isMobilePhone(phone))
-    {
+    }
+    if (!validator.isMobilePhone(phone)) {
         return res.json({
             success: false,
             message: "Mobile must contain 10 digit",
-            
+
         })
     }
 
 
-  if(!validator.isStrongPassword(password))
-    {
-      return res.json({
-          success: false,
-          message: "Password contains A-Z,0-9 ,a-z, @"
-      })
+    if (!validator.isStrongPassword(password)) {
+        return res.json({
+            success: false,
+            message: "Password contains A-Z,0-9 ,a-z, @"
+        })
     }
 
-  
+
     // validation to check if email already exists starts here
-     const existingUser = await User.findOne({ email: email });
+    const existingUser = await User.findOne({ email: email });
     if (existingUser) {
         return res.json({
             success: false,
@@ -87,7 +83,7 @@ if(!validator.isMobilePhone(phone))
     // validation to check if email already exists ends here
 
     // validation to check if phone already exists starts here
-    
+
     const existingUserPhone = await User.findOne({ phone: phone });
     if (existingUserPhone) {
         return res.json({
@@ -97,35 +93,30 @@ if(!validator.isMobilePhone(phone))
     }
     // validation to check if phone already exists ends here
 
-    if(password == cpassword){
-        
+    if (password == cpassword) {
+        const user = new User({
+            name: name,
+            email: email,
+            phone: phone,
+            password: password,
+            cpassword: cpassword,
+            role: role
+        })
 
-    const user = new User({
-        name: name,
-        email: email,
-        phone: phone,
-        password: password,
-        cpassword : cpassword,
-        role: role
-    })
-
-    const savedUser = await user.save();
+        const savedUser = await user.save();
 
         res.json({
             success: true,
             message: "User created successfully",
             data: savedUser
         })
-    
     }
-    else
-    {
+    else {
         res.json({
             success: false,
             message: "Password does not match"
         })
     }
-
 })
 
 app.listen(PORT, () => {

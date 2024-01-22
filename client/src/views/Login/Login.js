@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom'
 import axios from 'axios'
 import swal from 'sweetalert'
 import './Login.css'
+import Navbar from '../../component/Navbar/Navbar'
 function Login() {
 
   const [email, setEmail] = useState('')
@@ -44,6 +45,7 @@ function Login() {
   }
   return (
     <div>
+      <Navbar />
       <div className='row'>
         <div className='col-4'>
 

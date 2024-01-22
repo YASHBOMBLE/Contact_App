@@ -1,0 +1,58 @@
+
+
+
+.footer-section {
+    background: linear-gradient(to right, #6b6a6a 0%, black 100%);
+    position: relative;
+  }
+
+  .copyright-area {
+  background: linear-gradient(109.6deg, rgb(39, 22, 22) 32.4%, rgb(151, 96, 106) 98.8%);
+
+    background: linear-gradient(to right, #6b6a6a 0%, black 100%);
+    padding: 25px 0;
+  }
+  .copyright-text p {
+    margin: 0;
+    font-size: 14px;
+    color: white;
+  }
+  .copyright-text p a {
+    text-decoration: none;
+    color: #ff5e14;
+  }
+  .footer-menu li {
+    display: inline-block;
+    margin-left: 20px;
+  }
+  .footer-menu li:hover a {
+    color: #c0a69b;
+  }
+  .footer-menu li a {
+    text-decoration: none;
+    font-size: 14px;
+    color: #878787;
+  }
+  
+  .footer-cta .row .col-xl-4:nth-child(1) .single-cta i {
+    position: absolute;
+    color: #ff5e14;
+  }
+  .footer-cta .row .col-xl-4:nth-child(1) .single-cta .cta-text {
+    padding-left: 32px;
+  }
+  .footer-cta .row .col-xl-4:nth-child(2) .single-cta i {
+    color: #14ffa7;
+  }
+
+  .li-item{
+    font-family: 'Courier New';
+    letter-spacing: 3px;
+   
+  }
+
+.fontStyle{
+    font-family: 'Courier New';
+    letter-spacing: 3px;
+    word-spacing: 2px;
+}
