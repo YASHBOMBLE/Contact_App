@@ -137,7 +137,7 @@ app.post('/addcontact', async (req, res) => {
         
     })
 
-    const savedContact = await contct.save();
+    const savedContact = await contact.save();
 
     res.json({
         success: true,
@@ -145,6 +145,18 @@ app.post('/addcontact', async (req, res) => {
         data: savedContact
     })
 
+
+})
+
+app.get('/allcontact', async (req, res) => {
+
+    const contact = await Contact.find();
+
+    res.json({
+        success : true,
+        message : "contact fetch successfully",
+        data : contact
+    }) 
 
 })
 
