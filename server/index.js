@@ -3,6 +3,7 @@ import dotenv from 'dotenv';
 import validator from 'validator';
 import mongoose from 'mongoose';
 import User from './models/User.js';
+import Contact from './models/Contact.js';
 const app = express();
 app.use(express.json());
 dotenv.config();
@@ -117,6 +118,34 @@ app.post('/signup', async (req, res) => {
             message: "Password does not match"
         })
     }
+})
+
+app.post('/addcontact', async (req, res) => {
+    const { name, phone } = req.body;
+
+    if (!validator.isMobilePhone(phone)) {
+        return res.json({
+            success: false,
+            message: "Mobile must contain 10 digit",
+
+        })
+    }
+
+    const contact = new Contact({
+        name: name,
+        phone: phone,
+        
+    })
+
+    const savedContact = await contct.save();
+
+    res.json({
+        success: true,
+        message: "Conatct Saved successfully",
+        data: savedContact
+    })
+
+
 })
 
 app.listen(PORT, () => {
