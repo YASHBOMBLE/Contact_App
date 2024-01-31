@@ -43,12 +43,12 @@ function Login() {
       localStorage.removeItem('currentUser');
     }
   }
+  
   return (
     <div>
       <Navbar />
       <div className='row'>
         <div className='col-4'>
-
         </div>
         <div className='col-4 text-center '>
           Login Here
@@ -88,10 +88,10 @@ function Login() {
               </div>
             </div>
           </div>
-          </div>
-          </div>
         </div>
-        )
+      </div>
+    </div>
+  )
 }
 
-        export default Login
+export default Login
