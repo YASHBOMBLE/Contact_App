@@ -7,7 +7,7 @@
     justify-content: center;
     font-weight: bold;
     font-family: 'Courier New', Courier, monospace;
-    font-size: 28px;
+    font-size: 38px;
 }
 
 .input-title {
@@ -43,3 +43,21 @@
 .save-btn:hover{
     box-shadow: none;
 }
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+  }
+  
+  td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+  }
+  
+  tr:nth-child(even) {
+    background-color: #dddddd;
+  }
+  i{
+    cursor: pointer;
+  }
