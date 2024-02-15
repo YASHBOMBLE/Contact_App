@@ -30,9 +30,7 @@ body{
 .input-box:focus {
     outline: none;
 }
-.nav-logout{
-    margin-left: 1000px;
-}
+
 .text-light{
     display: flex;
     justify-content: end;
