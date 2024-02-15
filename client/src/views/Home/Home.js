@@ -2,6 +2,7 @@ import React from 'react'
 import { useState, useEffect } from 'react'
 import Navbar from '../../component/Navbar/Navbar'
 import Footer from '../../component/Footer/Footer'
+import Swal from 'sweetalert2'
 import { currentUser } from '../../util/currentUser'
 import swal from 'sweetalert'
 import axios from 'axios'
@@ -9,6 +10,8 @@ import './Home.css'
 function Home() {
   const [name, setName] = useState('')
   const [phone, setPhone] = useState('')
+  const [id, setId] = useState([])
+
   async function save() {
     const response = await axios.post('/addcontact', {
       name: name,
@@ -40,6 +43,12 @@ function Home() {
     }
   }
 
+  function getId() {
+    currentContact?.map((index, item) => {
+      setId(index._id)
+    })
+  }
+
   const [currentContact, setAllcontact] = useState([])
   async function fetchAllContacts() {
     const response = await axios.get('allcontact')
@@ -48,11 +57,26 @@ function Home() {
   }
   useEffect(() => {
     fetchAllContacts();
+    getId();
   }, [])
 
   if (!currentUser) {
     window.location.href = '/login'
   }
+
+  // async function deletecontact(){
+  //   id?.map((index,item)=>{
+  //     const response =  axios.post('/deletecontact', {
+  //       id : item
+  //     })
+  //     return(
+  //       <>
+  //        alert('success')
+  //       </>
+  //     )
+  //   })
+
+  // }
   return (
     <div>
       <div className='row'>
@@ -65,7 +89,7 @@ function Home() {
         <div className='col-4'>
         </div>
         <div className='col-4 '>
-         <br />
+          <br />
           <span className='input-title'>
             Name :
           </span>
@@ -97,9 +121,50 @@ function Home() {
             return (
               <>
                 <tr>
+
                   <td>  {index.name}</td>
                   <td>{index.phone}</td>
-                  <td><i class="fa-solid fa-trash"></i> &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; <i class="fa-regular fa-pen-to-square"></i></td>
+                  <td><i class="fa-solid fa-trash" onClick={async () => {
+                    const response = axios.post('/deletecontact', {
+                      id: index._id
+                    })
+
+                    await Swal.fire({
+                      title: "Success!",
+                      text: "Contact Deleted",
+                      icon: "success"
+                    });
+
+                    window.location.reload();
+
+
+                  }}></i> &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;<i class="fa-regular fa-pen-to-square" onClick={async () => {
+                    const { value: formValues } = await Swal.fire({
+                      title: "Update Contact",
+                      html: `
+                    
+                      <lable>Name : </lable>
+                        <input id="swal-input1" class="input-box" value={hello}><br/><br/>
+                        <lable>Phone : </lable>
+                        <input id="swal-input2" class="input-box">
+                      `,
+                      focusConfirm: false,
+                      preConfirm: () => {
+                        return [
+                          document.getElementById("swal-input1").value,
+                          document.getElementById("swal-input2").value
+                        ];
+                      }
+                    });
+                    if (formValues) {
+                      await Swal.fire({
+                        title: "Success!",
+                        text: "Contact Updated",
+                        icon: "success"
+                      });
+
+                    }
+                  }}></i></td>
                 </tr>
               </>
             )

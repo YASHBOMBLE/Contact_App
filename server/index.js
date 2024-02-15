@@ -160,6 +160,35 @@ app.get('/allcontact', async (req, res) => {
 
 })
 
+app.post('/deletecontact',async (req,res)=>{
+    const id = req.body;
+
+    const del = await Contact.deleteOne(id);
+
+    res.json({
+        success : true,
+        message : "Contact Deleted"
+    }) 
+})
+
+app.post('/updateContact',async (req,res)=>{
+    const {id}  = req.body;
+
+    const datail = Contact.findOne(id)
+
+    res.json({
+        success : true,
+        message : "Contact Deleted",
+        data : datail
+    })
+
+    // const response = await Contact.updateOne({
+    //     $set: {
+    //         name : name,
+    //         phone : phone
+    //       }
+    //})
+})
 app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);
 })
