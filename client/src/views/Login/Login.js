@@ -43,10 +43,10 @@ function Login() {
       localStorage.removeItem('currentUser');
     }
   }
-  
+
   return (
     <div>
-      <Navbar />
+
       <div className='row'>
         <div className='col-4'>
         </div>

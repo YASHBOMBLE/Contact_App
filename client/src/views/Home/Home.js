@@ -11,6 +11,9 @@ function Home() {
   const [name, setName] = useState('')
   const [phone, setPhone] = useState('')
   const [id, setId] = useState([])
+  const [updatedName, setUpdatedName] = useState('')
+  const [updatedPhone, setUpdatedPhone] = useState('')
+
 
   async function save() {
     const response = await axios.post('/addcontact', {
@@ -49,6 +52,11 @@ function Home() {
     })
   }
 
+  function logOut() {
+    localStorage.removeItem('currentUser');
+    window.location.href = '/login'
+  }
+
   const [currentContact, setAllcontact] = useState([])
   async function fetchAllContacts() {
     const response = await axios.get('allcontact')
@@ -82,6 +90,7 @@ function Home() {
       <div className='row'>
         <div className='col-12'>
           <span className='heading'>Add Contact</span>
+          <h6 className='me-2  nav-logout' onClick={logOut}>Logout  <span><i class="fa-solid fa-right-from-bracket"></i></span> </h6>
         </div>
 
       </div>
@@ -138,33 +147,7 @@ function Home() {
                     window.location.reload();
 
 
-                  }}></i> &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;<i class="fa-regular fa-pen-to-square" onClick={async () => {
-                    const { value: formValues } = await Swal.fire({
-                      title: "Update Contact",
-                      html: `
-                    
-                      <lable>Name : </lable>
-                        <input id="swal-input1" class="input-box" value={hello}><br/><br/>
-                        <lable>Phone : </lable>
-                        <input id="swal-input2" class="input-box">
-                      `,
-                      focusConfirm: false,
-                      preConfirm: () => {
-                        return [
-                          document.getElementById("swal-input1").value,
-                          document.getElementById("swal-input2").value
-                        ];
-                      }
-                    });
-                    if (formValues) {
-                      await Swal.fire({
-                        title: "Success!",
-                        text: "Contact Updated",
-                        icon: "success"
-                      });
-
-                    }
-                  }}></i></td>
+                  }}></i> &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;</td>
                 </tr>
               </>
             )
