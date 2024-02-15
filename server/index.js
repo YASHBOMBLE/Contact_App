@@ -4,6 +4,8 @@ import validator from 'validator';
 import mongoose from 'mongoose';
 import User from './models/User.js';
 import Contact from './models/Contact.js';
+import path from 'path';
+const __dirname = path.resolve();
 const app = express();
 app.use(express.json());
 dotenv.config();
