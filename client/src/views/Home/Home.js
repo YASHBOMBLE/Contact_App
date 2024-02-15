@@ -90,7 +90,7 @@ function Home() {
       <div className='row'>
         <div className='col-12'>
           <span className='heading'>Add Contact</span>
-          <h6 className='me-2  nav-logout' onClick={logOut}>Logout  <span><i class="fa-solid fa-right-from-bracket"></i></span> </h6>
+          <h6 className='me-2 text-light nav-logout' onClick={logOut}>Logout  <span><i class="fa-solid fa-right-from-bracket"></i></span> </h6>
         </div>
 
       </div>
@@ -147,7 +147,9 @@ function Home() {
                     window.location.reload();
 
 
-                  }}></i> &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;</td>
+                  }}></i> &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; <i class="fa-solid fa-phone" onClick={()=>{
+                    window.open('tel:`{index.phone}`')
+                  }}></i></td>
                 </tr>
               </>
             )

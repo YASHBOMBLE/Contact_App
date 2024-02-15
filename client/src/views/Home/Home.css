@@ -33,6 +33,9 @@ body{
 .nav-logout{
     margin-left: 1000px;
 }
+.text-light{
+    color: antiquewhite;
+}
 .save-btn{
     width: 90px;
     border: none;
