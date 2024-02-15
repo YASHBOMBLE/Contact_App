@@ -36,6 +36,9 @@ body{
 .text-light{
     color: antiquewhite;
 }
+.clr{
+    color: whitesmoke;
+}
 a{
     text-decoration: none;
     color: black;

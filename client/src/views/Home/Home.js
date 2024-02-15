@@ -89,7 +89,7 @@ function Home() {
     <div>
       <div className='row'>
         <div className='col-12'>
-          <span className='heading'>Add Contact</span>
+          <span className='heading clr'>Add Contact</span>
           <h6 className='me-2 text-light nav-logout' onClick={logOut}>Logout  <span><i class="fa-solid fa-right-from-bracket"></i></span> </h6>
         </div>
 
@@ -119,41 +119,46 @@ function Home() {
         <div className='col-4'>
         </div>
       </div>
-      <table>
-        <tr>
-          <th>Name</th>
-          <th>Contact No</th>
-          <th>Action</th>
-        </tr>
-        {
-          currentContact?.map((index, item) => {
-            return (
-              <>
-                <tr>
+      <div className='row'>
+        <div className='col-12'>
+          <table>
+            <tr>
+              <th>Name</th>
+              <th>Contact No</th>
+              <th>Action</th>
+            </tr>
+            {
+              currentContact?.map((index, item) => {
+                return (
+                  <>
+                    <tr>
 
-                  <td>  {index.name}</td>
-                  <td>{index.phone}</td>
-                  <td><i class="fa-solid fa-trash" onClick={async () => {
-                    const response = axios.post('/deletecontact', {
-                      id: index._id
-                    })
+                      <td>  {index.name}</td>
+                      <td>{index.phone}</td>
+                      <td><i class="fa-solid fa-trash" onClick={async () => {
+                        const response = axios.post('/deletecontact', {
+                          id: index._id
+                        })
 
-                    await Swal.fire({
-                      title: "Success!",
-                      text: "Contact Deleted",
-                      icon: "success"
-                    });
+                        await Swal.fire({
+                          title: "Success!",
+                          text: "Contact Deleted",
+                          icon: "success"
+                        });
 
-                    window.location.reload();
+                        window.location.reload();
 
 
-                  }}></i> &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; <a href={`tel:${index.phone}`}><i class="fa-solid fa-phone"></i></a></td>
-                </tr>
-              </>
-            )
-          })
-        }
-      </table>
+                      }}></i> &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; <a href={`tel:${index.phone}`}><i class="fa-solid fa-phone"></i></a></td>
+                    </tr>
+                  </>
+                )
+              })
+            }
+          </table>
+        </div>
+      </div>
+
     </div>
   )
 }
