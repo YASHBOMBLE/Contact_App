@@ -34,7 +34,8 @@ body{
     margin-left: 1000px;
 }
 .text-light{
-    color: antiquewhite;
+    display: flex;
+    justify-content: end;
 }
 .clr{
     color: whitesmoke;

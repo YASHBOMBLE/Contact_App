@@ -51,7 +51,7 @@ function Login() {
         <div className='col-4'>
         </div>
         <div className='col-4 text-center '>
-          Login Here
+          
         </div>
         <div className='col-4'></div>
 
