@@ -1,7 +1,9 @@
 .input {
     display: inline;
 }
-
+body{
+    background: linear-gradient(250.6deg, rgb(6, 2, 2) 32.4%, rgb(211, 207, 164) 28.8%);
+}
 .heading {
     display: flex;
     justify-content: center;

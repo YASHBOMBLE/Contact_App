@@ -26,7 +26,7 @@
   }
   
   .form-container {
-    background: linear-gradient(109.6deg, rgb(6, 2, 2) 32.4%, rgb(137, 30, 47) 98.8%);
+    background: linear-gradient(109.6deg, rgb(6, 2, 2) 32.4%, rgb(137, 30, 47) 28.8%);
     width: 400px;
     padding: 20px;
     border-radius: 8px;
@@ -43,7 +43,7 @@
   }
   
   .size-form-container {
-    background: linear-gradient(109.6deg, rgb(6, 2, 2) 32.4%, rgb(137, 30, 47) 98.8%);
+    background: linear-gradient(109.6deg, rgb(6, 2, 2) 32.4%, rgb(137, 30, 47) 28.8%);
     width: 360px;
     padding: 20px;
     border-radius: 8px;
