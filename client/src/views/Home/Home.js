@@ -147,9 +147,7 @@ function Home() {
                     window.location.reload();
 
 
-                  }}></i> &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; <i class="fa-solid fa-phone" onClick={()=>{
-                    window.open('tel:`{index.phone}`')
-                  }}></i></td>
+                  }}></i> &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; <a href={`tel:${index.phone}`}><i class="fa-solid fa-phone"></i></a></td>
                 </tr>
               </>
             )
